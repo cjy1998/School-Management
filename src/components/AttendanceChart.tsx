@@ -14,16 +14,29 @@ import {
 
 const data = [
   {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    name: "Mon",
+    present: 4000,
+    absent: 2400,
   },
   {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
+    name: "Tue",
+    present: 3000,
+    absent: 1398,
+  },
+  {
+    name: "Wed",
+    present: 3000,
+    absent: 1398,
+  },
+  {
+    name: "Thu",
+    present: 3000,
+    absent: 1398,
+  },
+  {
+    name: "Fri",
+    present: 3000,
+    absent: 1398,
   },
 ];
 
@@ -36,7 +49,7 @@ const AttendanceChart = () => {
         <h1 className="text-lg font-semibold">Attendance</h1>
         <Image src="/moreDark.png" alt="" width={20} height={20} />
       </div>
-      <div className="flex gap-1">
+      <div className="flex gap-1 mt-5 mb-10">
         <div className="w-5 h-5 bg-lamaSky rounded-full" />
         <h2 className="font-bold text-lamaSky">present</h2>
         <div className="w-5 h-5 bg-lamaYellow rounded-full" />
@@ -44,32 +57,29 @@ const AttendanceChart = () => {
       </div>
       <div className="w-full h-[75%]">
         <ResponsiveContainer>
-          <BarChart
-            width={500}
-            height={300}
-            data={data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar
-              dataKey="pv"
-              fill="#8884d8"
-              activeBar={<Rectangle fill="pink" stroke="blue" />}
+          <BarChart width={500} height={300} data={data} barSize={20}>
+            <CartesianGrid
+              strokeDasharray="3 3"
+              vertical={false}
+              stroke="#ddd"
             />
-            <Bar
-              dataKey="uv"
-              fill="#82ca9d"
-              activeBar={<Rectangle fill="gold" stroke="purple" />}
+            <XAxis
+              dataKey="name"
+              axisLine={false}
+              tick={{ fill: "#d1d5db" }}
+              tickLine={false}
             />
+            <YAxis
+              axisLine={false}
+              tick={{ fill: "#d1d5db" }}
+              tickLine={false}
+            />
+            <Tooltip
+              contentStyle={{ borderRadius: "10px", borderColor: "lightgray" }}
+            />
+            {/* <Legend /> */}
+            <Bar dataKey="present" fill="#FAE27C" radius={[10, 10, 0, 0]} />
+            <Bar dataKey="absent" fill="#C3EBFA" radius={[10, 10, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>
