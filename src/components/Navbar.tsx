@@ -13,7 +13,7 @@ const Navbar = () => {
     console.log("submitted");
   };
   return (
-    <div className="flex items-center justify-between p-4">
+    <div className="flex items-center justify-between p-4 bg-white sticky top-0 z-10">
       {/* 搜索框 */}
       <div className="hidden md:block">
         <Input

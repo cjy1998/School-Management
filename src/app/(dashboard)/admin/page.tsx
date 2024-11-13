@@ -1,5 +1,7 @@
+import Announcements from "@/components/Announcements";
 import AttendanceChart from "@/components/AttendanceChart";
 import CountChart from "@/components/CountChart";
+import EventCalendar from "@/components/EventCalendar";
 import FinaceChart from "@/components/FinaceChart";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { nowDate } from "@/lib/utils";
@@ -10,7 +12,7 @@ const AdminPage = () => {
       {/* 左侧  */}
       <div className="w-full lg:w-2/3 flex flex-col gap-8">
         {/* 用户数统计 */}
-        <BentoGrid className="max-w-4xl">
+        <BentoGrid>
           {items.map((item, i) => (
             <BentoGridItem
               key={i}
@@ -35,7 +37,15 @@ const AdminPage = () => {
           <FinaceChart />
         </div>
       </div>
-      <div className="w-full lg:w-1/3">r</div>
+      <div className="w-full lg:w-1/3 flex flex-col gap-8">
+        {/* 日历 */}
+        <div>
+          <EventCalendar />
+        </div>
+        <div>
+          <Announcements />
+        </div>
+      </div>
     </div>
   );
 };
